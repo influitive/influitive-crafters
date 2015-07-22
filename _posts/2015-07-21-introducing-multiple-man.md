@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "React Workshop"
+title:  "Introducing MultipleMan"
 date:   2015-07-21 15:38:50
 categories:
-  - events
+  - opensource
 ---
 This is my post about the react workshop coming up.

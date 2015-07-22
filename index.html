@@ -4,19 +4,55 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
+  <section class='hero-unit'>
+      <h1>Influitive Crafters</h1>
+      <p>Super witty tagline</p>
+    </section>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+    <section class='details'>
+      <p>Stuff about Influitive. Why craftsmanship is important to us.
+        Why we're cool.</p>
+    </section>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+    <section class='events'>
+      <h2>Upcoming Events</h2>
+
+      <ul class='article-list'>
+        {% for post in site.categories["events"] %}
+          <li><a href='{{ post.url }}'>{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section class='team'>
+      <h2>Meet the Team</h2>
+
+      <ul class='article-list'>
+        {% for post in site.categories["team"] %}
+          <li><a href='{{ post.url }}'>{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section class='open-source'>
+      <h2>Open Source @ Influitive</h2>
+
+      <ul class='article-list'>
+        {% for post in site.categories["opensource"] %}
+          <li><a href='{{ post.url }}'>{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section class='article-list'>
+      <h2>Recent Blog Posts</h2>
+
+      <ul class='article-list'>
+        {% for post in site.categories["news"] %}
+          <li><a href='{{ post.url }}'>{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
 
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
