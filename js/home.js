@@ -1,5 +1,5 @@
 (function(){
-  var Home = function(){
+  var Events = function(){
     var months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 
     function determineEventsDate(){
@@ -32,5 +32,5 @@
     };
   };
 
-  new Home().determineEventsDate();
+  new Events().determineEventsDate();
 })();

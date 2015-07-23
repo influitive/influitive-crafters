@@ -48,10 +48,21 @@ layout: default
     <section class='team' id='team'>
       <h2 class='section-title'>Meet the Team</h2>
 
-      <ul class='article-list'>
+      <ul class='team-list'>
         {% for post in site.categories["team"] %}
-          <li><a href='{{ post.url }}'>{{ post.title }}</a></li>
+          <li class="member">
+            <a href='{{ post.url }}'>
+              <img src="{{ post.image }}" />
+              <span class="name">{{ post.name }}</span>
+            </a>
+          </li>
         {% endfor %}
+          <li class="member">
+            <a href=''>
+              <img src="{{ "/images/team/team.jpg" | prepend: site.baseurl }}" />
+              <span class="name">The Team</span>
+            </a>
+          </li>
       </ul>
     </section>
 

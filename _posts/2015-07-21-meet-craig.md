@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Meet Ryan"
-name:   "Ryan Brunner"
-image:  "images/team/ryan_brunner.jpg"
+title:  "Meet Craig"
+name:   "Craig Savolainen"
+image:  "images/team/craig_savolainen.jpg"
 date:   2015-07-21 15:38:50
 categories:
   - team
