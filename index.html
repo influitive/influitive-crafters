@@ -45,6 +45,16 @@ layout: default
       </ul>
     </section>
 
+    <section class='article-list' id='recent-posts'>
+      <h2 class='section-title'>Recent Blog Posts</h2>
+
+      <ul class='article-list'>
+        {% for post in site.categories["news"] %}
+          <li><a href='{{ post.url }}'>{{ post.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </section>
+
     <section class='team' id='team'>
       <h2 class='section-title'>Meet the Team</h2>
 
@@ -71,16 +81,6 @@ layout: default
 
       <ul class='article-list'>
         {% for post in site.categories["opensource"] %}
-          <li><a href='{{ post.url }}'>{{ post.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </section>
-
-    <section class='article-list' id='recent-posts'>
-      <h2 class='section-title'>Recent Blog Posts</h2>
-
-      <ul class='article-list'>
-        {% for post in site.categories["news"] %}
           <li><a href='{{ post.url }}'>{{ post.title }}</a></li>
         {% endfor %}
       </ul>
