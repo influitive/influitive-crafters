@@ -22,7 +22,25 @@ layout: default
 
       <ul class='event-list'>
         {% for post in site.categories["events"] %}
-          <li><a href='{{ post.url }}'>{{ post.title }}</a></li>
+          <li class="event">
+            <a href='{{ post.url }}'>
+              <span class="event-header">
+                <img src="{{ post.image }}" />
+              </span>
+              <span class="calendar">
+                <span class="event-date" data-date="{{ post.date }}">
+                  <span class="day"></span>
+                  <span class="month"></span>
+                </span>
+              </span>
+              <span class="details">
+                <span class="title">{{ post.title }}</span>
+                <span class="location">
+                  <span>@ {{post.location }}</span>
+                </span>
+              </span>
+            </a>
+          </li>
         {% endfor %}
       </ul>
     </section>
@@ -60,3 +78,5 @@ layout: default
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
+
+<script type="text/javascript" src="{{ "/js/home.js" | prepend: site.baseurl }}"></script>

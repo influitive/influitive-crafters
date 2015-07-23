@@ -1,3 +1,8 @@
+body {
+  padding-top: 71px;
+  background-color: #eff3f6;
+}
+
 .branding {
   position: fixed;
   width: 100%;
@@ -5,9 +10,10 @@
   top: 0px;
   left: 0px;
   border-bottom: 1px solid #cccccc;
-}
+  z-index: 1000;
+
   #logo {
-    background-image: url("../images/influitive_logo.png");
+    background-image: url("../images/base/influitive_logo.png");
     background-size: 130px 30px;
     background-repeat: no-repeat;
     background-position: left center;
@@ -16,34 +22,38 @@
     margin: 10px;
     float: left;
     border-right: 1px solid #cccccc;
-  }
-    #logo span {
+
+    span {
       display: none;
     }
+  }
+
 
   #nav-bar {
     float: left;
     padding: 0px;
-  }
 
-    #nav-bar li {
+    li {
       display: inline-block;
-    }
-      #nav-bar li a {
+
+      a {
         padding: 10px 20px;
         display: block;
         text-decoration: none;
         color: #444444;
-      }
-        #nav-bar li a:hover {
+
+        &:hover {
           background-color: #ebebeb;
         }
+      }
+    }
+  }
+}
 
 .hero-unit {
-  margin-top: 71px;
   color: #fff;
   background-image: url("http://3mx24s1dzkew1x7chz4af8it19rs.wpengine.netdna-cdn.com/wp-content/themes/influitive/assets/css/img/presentation-bg.jpg");
-}
+
   .branding-bar {
     width: 100%;
     height: 10px;
@@ -51,37 +61,130 @@
     clear: left;
   }
 
-  .hero-unit .details {
+  .details {
     padding: 80px;
     text-align: center;
   }
+}
 
 .mission {
-
-}
-  .mission .details {
+  .details {
     width: 500px;
     margin: 0px auto;
     font-size: 13px;
     text-align: left;
-    color: #666666;
+    color: #333;
   }
+}
 
 .section-title {
   text-align: center;
-  color: #666666;
+  color: #333;
   font-weight: normal;
   font-size: 20px;
 }
 
 .events {
+  background-color: #fff;
+  padding: 10px 0px 20px;
+  margin: 20px 0px;
 
-}
-
-  .events .event-list {
+  .event-list {
     width: 800px;
     margin: 0px auto;
-  }
-    .events .event-list .event {
+    overflow: hidden;
+    padding: 0px;
 
+    .event {
+      width: 33%;
+      display: block;
+      float: left;
+      list-style-type: none;
+      overflow: hidden;
+
+      &:hover {
+        background-color: #ebebeb;
+      }
+
+      a {
+        text-decoration: none;
+        margin: 10px;
+        display: block;
+        overflow: hidden;
+
+        .event-header {
+          height: 100px;
+          overflow: hidden;
+          display: block;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .calendar {
+          display: block;
+          float: left;
+          width: 28%;
+          height: 48px;
+          overflow: hidden;
+          background-color: #2284c5;
+          color: #fff;
+          text-align: center;
+          padding-top: 2px;
+
+          .event-date {
+            position: relative;
+            display: block;
+
+            .day {
+              position: absolute;
+              width: 100%;
+              text-align: center;
+              font-size: 24px;
+              left: 0px;
+              top: 12px;
+              display: block;
+            }
+
+            .month {
+              position: absolute;
+              width: 100%;
+              text-align: center;
+              display: block;
+              left: 0px;
+              top: 2px;
+              font-size: 10px;
+            }
+          }
+        }
+
+        .details {
+          display: block;
+          float: left;
+          width: 72%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          .title {
+            color: #444;
+            display: block;
+            margin: 5px 10px 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+          }
+
+          .location  {
+            display: block;
+            margin: 5px 10px 2px;
+            color: #666;
+            font-size: 10px;
+          }
+        }
+      }
     }
+  }
+}
