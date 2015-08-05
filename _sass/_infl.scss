@@ -54,17 +54,17 @@ body {
   color: #fff;
   background-image: url("http://3mx24s1dzkew1x7chz4af8it19rs.wpengine.netdna-cdn.com/wp-content/themes/influitive/assets/css/img/presentation-bg.jpg");
 
-  .branding-bar {
-    width: 100%;
-    height: 10px;
-    background-image: url("http://3mx24s1dzkew1x7chz4af8it19rs.wpengine.netdna-cdn.com/wp-content/themes/influitive/assets/css/img/presentation-border.jpg");
-    clear: left;
-  }
-
   .details {
     padding: 80px;
     text-align: center;
   }
+}
+
+.branding-bar {
+  width: 100%;
+  height: 10px;
+  background-image: url("http://3mx24s1dzkew1x7chz4af8it19rs.wpengine.netdna-cdn.com/wp-content/themes/influitive/assets/css/img/presentation-border.jpg");
+  clear: left;
 }
 
 .mission {
@@ -246,4 +246,95 @@ body {
   background-color: #2284c5;
   padding: 10px 0px 20px;
   margin: 0px 0px 20px;
+}
+
+.additional-details-about-us {
+  background-color: #1e2025;
+  color: #fff;
+  overflow: hidden;
+  padding: 100px 10%;
+
+  p {
+    font-size: 15px;
+  }
+
+  .connect-with-us {
+    float: left;
+    width: 30%;
+    margin-right: 5%;
+
+    .ways-to-connect {
+      overflow: hidden;
+      padding: 0px;
+
+      li {
+        float: left;
+        list-style-type: none;
+        width: 50px;
+        height: 60px;
+        margin-right: 20px;
+
+        &.email {
+          a {
+            .ic-email-share {
+              font-size: 55px;
+              color: #fff;
+              position: relative;
+              top: -6px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .more-about-us {
+    float: left;
+    width: 30%;
+    margin-right: 5%;
+  }
+
+  .we-are-hiring {
+    float: left;
+    width: 30%;
+
+    .button {
+      margin:0;
+      border-radius: 2px;
+      text-decoration: none;
+      white-space: nowrap;
+      border: none;
+      padding: 10px 15px;
+      text-align: center;
+      display: inline-block;
+      font-size: 13px;
+
+      &.important {
+        text-decoration:none;
+        border-style: none;
+        color: white !important;
+        background-color: darken(#ffcc00, 7%);
+        box-shadow: 0px 2px darken(#ffcc00, 12%);
+
+        &:hover {
+          color: white !important;
+          background-color: darken(#ffcc00, 2%);
+          box-shadow: 0px 2px darken(#ffcc00, 5%);
+        }
+      }
+    }
+  }
+}
+
+.site-footer {
+  background-color: #269dbb;
+  padding: 20px 40px;
+  text-align: center;
+
+  h5 {
+    font-weight: normal;
+    margin: 0px;
+    color: #fff;
+    font-size: 14px;
+  }
 }
