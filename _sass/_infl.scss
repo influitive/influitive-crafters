@@ -48,6 +48,23 @@ body {
       }
     }
   }
+
+  .hiring {
+    color: #269dbb;
+    text-decoration: none;
+    display: block;
+    float: right;
+    width: 150px;
+    padding: 10px 0px;
+    text-align: center;
+    margin: 16px 10px;
+
+    &:hover {
+      background-color: #269dbb;
+      border-radius: 2px;
+      color: #fff;
+    }
+  }
 }
 
 .hero-unit {
@@ -55,8 +72,21 @@ body {
   background-image: url("http://3mx24s1dzkew1x7chz4af8it19rs.wpengine.netdna-cdn.com/wp-content/themes/influitive/assets/css/img/presentation-bg.jpg");
 
   .details {
-    padding: 80px;
+    padding: 25px;
     text-align: center;
+
+    img {
+      width: 200px;
+      height: 200px;
+    }
+
+    h1 {
+      font-weight: normal;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 100px;
+      margin-top: 0px;
+        margin-bottom: 20px;
+    }
   }
 }
 
@@ -81,12 +111,13 @@ body {
   text-align: center;
   color: #333;
   font-weight: normal;
-  font-size: 20px;
+  font-size: 30px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .events {
   background-color: #fff;
-  padding: 10px 0px 20px;
+  padding: 10px 0px 40px;
   margin: 20px 0px;
 
   .event-list {
@@ -203,7 +234,7 @@ body {
 
     .member {
       float: left;
-      width: 18%;
+      width: 23%;
       margin: 0px 1%;
       overflow: hidden;
       height: 100%;
@@ -217,7 +248,7 @@ body {
         img {
           height: 100%;
           position: relative;
-          left : -50%;
+          left : -25%;
         }
 
         .name {
@@ -230,12 +261,13 @@ body {
           color: #fff;
           font-weight: bold;
           font-size: 24px;
+          padding: 10px 0px;
         }
       }
 
       &:hover {
         .name {
-          background-color: rgba(68, 68, 68, 0.8);
+          background-color: rgba(168, 208, 76, 1);
         }
       }
     }
@@ -243,9 +275,8 @@ body {
 }
 
 .open-source {
-  background-color: #2284c5;
   padding: 10px 0px 20px;
-  margin: 0px 0px 20px;
+  margin: 0px 0px;
 }
 
 .additional-details-about-us {
@@ -256,6 +287,12 @@ body {
 
   p {
     font-size: 15px;
+  }
+
+  h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: 24px;
   }
 
   .connect-with-us {
