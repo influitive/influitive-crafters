@@ -115,6 +115,48 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+.recent-posts {
+  .posts {
+    width: 800px;
+    margin: 0px auto;
+
+    .post {
+      list-style-type: none;
+      border-top: 1px solid #cccccc;
+      padding-bottom: 30px;
+
+      &:first-child {
+        border-top: 0px;
+      }
+
+      h2 {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: normal;
+
+        a {
+          text-decoration: none;
+          color: #444444;
+
+          &:hover {
+            color: #269dbb;
+          }
+        }
+      }
+
+      .author {
+        a {
+          text-decoration: none;
+          color: #269dbb;
+
+          &:hover {
+            color: #197097;
+          }
+        }
+      }
+    }
+  }
+}
+
 .events {
   background-color: #fff;
   padding: 10px 0px 40px;
@@ -287,7 +329,7 @@ body {
       float: left;
       width: 30%;
       height: 300px;
-      margin: 20px 1%;
+      margin: 10px 1%;
       background-color: #fff;
       position: relative;
       background-color: #5dc6a5;
