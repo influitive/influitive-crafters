@@ -76,13 +76,21 @@ layout: default
     <ul class='projects'>
       {% for post in site.categories["opensource"] %}
         <li class="project">
-          <a href='{{ post.url }}'>
-            <span class="project-banner"></span>
-            <span class="project-details">
-              <span class="">{{ post.title }}</span>
-              <span class=""
+          <h4 class="title">{{ post.title }}</h4>
+          <div class="github-status">
+            <span class="stars">
+              <span class="ic ic-star"></span>
+              {{ post.stars }}
             </span>
-          </a>
+            <span class="forks">
+              <span class="ic ic-share"></span>
+              {{ post.forks }}
+            </span>
+          </div>
+          <p class="description">{{ post.description }}</p>
+          <div class="actions">
+            <a href='{{ post.url }}' class="button important">View on Github</a>
+          </div>
         </li>
       {% endfor %}
     </ul>

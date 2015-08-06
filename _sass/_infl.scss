@@ -275,8 +275,57 @@ body {
 }
 
 .open-source {
-  padding: 10px 0px 20px;
+  padding: 10px 200px 20px;
   margin: 0px 0px;
+
+  .projects {
+    overflow: hidden;
+    padding: 0px;
+
+    .project {
+      list-style-type: none;
+      float: left;
+      width: 30%;
+      height: 300px;
+      margin: 20px 1%;
+      background-color: #fff;
+      position: relative;
+      background-color: #5dc6a5;
+      color: #fff;
+
+      &:hover {
+        background-color: darken(#5dc6a5, 10%);
+      }
+
+      .title {
+        display: block;
+        text-align: center;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 20px;
+        margin: 0px 0px 20px;
+        padding: 20px;
+        font-weight: normal;
+      }
+
+      .github-status {
+        text-align: center;
+      }
+
+      .description {
+        padding: 20px;
+        font-size: 13px;
+        text-align: center;
+      }
+
+      .actions {
+        position: absolute;
+        bottom: 0px;
+        text-align: center;
+        width: 100%;
+        padding: 10px 0px 15px;
+      }
+    }
+  }
 }
 
 .additional-details-about-us {
@@ -334,31 +383,31 @@ body {
   .we-are-hiring {
     float: left;
     width: 30%;
+  }
+}
 
-    .button {
-      margin:0;
-      border-radius: 2px;
-      text-decoration: none;
-      white-space: nowrap;
-      border: none;
-      padding: 10px 15px;
-      text-align: center;
-      display: inline-block;
-      font-size: 13px;
+.button {
+  margin:0;
+  border-radius: 2px;
+  text-decoration: none;
+  white-space: nowrap;
+  border: none;
+  padding: 10px 15px;
+  text-align: center;
+  display: inline-block;
+  font-size: 13px;
 
-      &.important {
-        text-decoration:none;
-        border-style: none;
-        color: white !important;
-        background-color: darken(#ffcc00, 7%);
-        box-shadow: 0px 2px darken(#ffcc00, 12%);
+  &.important {
+    text-decoration:none;
+    border-style: none;
+    color: white !important;
+    background-color: darken(#ffcc00, 7%);
+    box-shadow: 0px 2px darken(#ffcc00, 12%);
 
-        &:hover {
-          color: white !important;
-          background-color: darken(#ffcc00, 2%);
-          box-shadow: 0px 2px darken(#ffcc00, 5%);
-        }
-      }
+    &:hover {
+      color: white !important;
+      background-color: darken(#ffcc00, 2%);
+      box-shadow: 0px 2px darken(#ffcc00, 5%);
     }
   }
 }
