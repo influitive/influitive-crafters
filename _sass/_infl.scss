@@ -693,3 +693,41 @@ body {
     font-size: 14px;
   }
 }
+
+/* post */
+.post {
+  margin: 0px auto;
+
+  @media (max-width: 400px) {
+    width: 90%;
+  }
+
+  @media (min-width: 401px) and (max-width: 800px) {
+    width: 400px;
+  }
+
+  @media (min-width: 801px) {
+    width: 800px;
+  }
+
+  .post-header {
+    text-align: center;
+    border-bottom: 1px solid #cccccc;
+
+    .post-title {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: normal;
+    }
+
+    .author {
+      a {
+        text-decoration: none;
+        color: #269dbb;
+
+        &:hover {
+          color: #197097;
+        }
+      }
+    }
+  }
+}

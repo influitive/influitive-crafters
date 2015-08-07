@@ -34,30 +34,4 @@
   };
 
   new Events().determineEventsDate();
-
-  var Posts = function(){
-    function determinePostDate(){
-      var postDates = document.querySelectorAll(".recent-posts .post .post-date");
-
-      for(var i = 0; i < postDates.length; i++){
-        _determineDate(postDates[i]);
-      }
-    }
-
-    function _determineDate(postDate) {
-      var date = new Date(postDate.getAttribute("data-date"));
-
-      _setDate(postDate, date.toDateString());
-    }
-
-    function _setDate(postDate, dateString){
-      postDate.innerHTML = dateString;
-    }
-
-    return {
-      determinePostDate : determinePostDate
-    }
-  };
-
-  new Posts().determinePostDate();
 })();
