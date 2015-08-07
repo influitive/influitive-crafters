@@ -741,7 +741,7 @@ body {
   }
 
   @media (min-width: 401px) and (max-width: 800px) {
-    width: 400px;
+    width: 90%;
   }
 
   @media (min-width: 801px) {
@@ -753,11 +753,24 @@ body {
     margin: 20px 0px;
 
     .event-details {
-      float: left;
-      width: 469px;
-      min-height: 500px;
+      @media (max-width: 400px) {
+        width: 90%;
+        margin: 0px auto;
+      }
+
+      @media (min-width: 401px) and (max-width: 800px) {
+        width: 95%;
+        margin: 0px auto;
+      }
+
+      @media (min-width: 801px) {
+        float: left;
+        width: 469px;
+        min-height: 500px;
+        border-right: 1px solid #cccccc;
+      }
+
       padding: 0px 10px 10px;
-      border-right: 1px solid #cccccc;
 
       .event-banner {
         img {
@@ -774,10 +787,23 @@ body {
     }
 
     .event-map {
-      float: left;
-      width: 270px;
-      margin-left: 20px;
       padding: 0px 10px 10px;
+
+      @media (max-width: 400px) {
+        width: 90%;
+        margin: 0px auto;
+      }
+
+      @media (min-width: 401px) and (max-width: 800px) {
+        width: 95%;
+        margin: 0px auto;
+      }
+
+      @media (min-width: 801px) {
+        float: left;
+        width: 270px;
+        margin-left: 20px;
+      }
 
       iframe {
         width: 100%;
