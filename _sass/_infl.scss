@@ -731,3 +731,58 @@ body {
     }
   }
 }
+
+/* event */
+.event {
+  margin: 0px auto;
+
+  @media (max-width: 400px) {
+    width: 90%;
+  }
+
+  @media (min-width: 401px) and (max-width: 800px) {
+    width: 400px;
+  }
+
+  @media (min-width: 801px) {
+    width: 800px;
+  }
+
+  .event-content {
+    overflow: hidden;
+    margin: 20px 0px;
+
+    .event-details {
+      float: left;
+      width: 469px;
+      min-height: 500px;
+      padding: 0px 10px 10px;
+      border-right: 1px solid #cccccc;
+
+      .event-banner {
+        img {
+          width: 100%;
+        }
+      }
+
+      .event-header {
+        .event-title {
+          font-family: 'Open Sans', sans-serif;
+          font-weight: normal;
+        }
+      }
+    }
+
+    .event-map {
+      float: left;
+      width: 270px;
+      margin-left: 20px;
+      padding: 0px 10px 10px;
+
+      iframe {
+        width: 100%;
+        height: 400px;
+      }
+    }
+  }
+}

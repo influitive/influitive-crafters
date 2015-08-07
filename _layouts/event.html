@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<div class="event">
+  <article class="event-content">
+    <div class="event-details">
+      <div class="event-header">
+        <div class="event-banner">
+          <img src="{{ page.image | prepend: site.baseurl }}" />
+        </div>
+        <h1 class="event-title">{{ page.title }}</h1>
+        <p class="event-meta">
+          {{ page.date | date: "%b %-d, %Y" }}{% if page.meta %} • {{ page.meta }}{% endif %}
+        </p>
+      </div>
+      {{ content }}
+    </div>
+    <div class="event-map">
+      <iframe frameborder="0" style="border:0" src="{{ page.map }}" allowfullscreen></iframe>
+    </div>
+  </article>
+
+</div>
