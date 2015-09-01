@@ -169,8 +169,8 @@ body {
 
 .mission {
   .details {
-    margin: 0px auto;
-    font-size: 15px;
+    margin: 0px auto 10px;
+    font-size: 18px;
     text-align: left;
     color: #333;
 
@@ -183,7 +183,7 @@ body {
     }
 
     @media (min-width: 801px) {
-      width: 500px;
+      width: 800px;
     }
   }
 }
@@ -459,6 +459,7 @@ body {
           font-weight: bold;
           font-size: 24px;
           padding: 10px 0px;
+          background-color: rgba(0, 0, 0, 0.3);
 
           @media (max-width: 400px) {
             background-color: rgba(168, 208, 76, 1);
