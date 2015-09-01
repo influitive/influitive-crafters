@@ -2,7 +2,7 @@
 layout: post
 title:  "Meet Eduardo"
 name:   "Eduardo Paleo"
-image:  "images/team/ryan_brunner.jpg"
+image:  "images/team/eduardo.jpg"
 date:   2015-07-21 15:38:50
 categories:
   - team

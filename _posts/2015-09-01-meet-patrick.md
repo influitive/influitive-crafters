@@ -2,7 +2,7 @@
 layout: post
 title:  "Meet Patrick"
 name:   "Patrick Priestly"
-image:  "images/team/ryan_brunner.jpg"
+image:  "images/team/patrick.jpg"
 date:   2015-07-21 15:38:50
 categories:
   - team
@@ -10,7 +10,7 @@ categories:
 
 #### How did you get into QA?
 
-I think it was about seven or eight years ago I worked with a close friend of mine building mobile apps. He was more technical, and I would help with the marketing and QA side of things. He ended up going to school for computer science, I went to school for something else and then we met up later on. He was working at a mobile gaming company and there was a QA opening - that’s how I got into it. 
+I think it was about seven or eight years ago I worked with a close friend of mine building mobile apps. He was more technical, and I would help with the marketing and QA side of things. He ended up going to school for computer science, I went to school for something else and then we met up later on. He was working at a mobile gaming company and there was a QA opening - that’s how I got into it.
 
 #### So you were doing a few different things there. What specifically about the QA part was attractive to you?
 
