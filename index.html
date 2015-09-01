@@ -95,7 +95,8 @@ layout: default
     <h2 class="section-title">OPEN SOURCE @ INFLUITIVE</h2>
 
     <ul class='projects'>
-      {% for post in site.categories["opensource"] %}
+      {% assign sorted_repos = (site.categories["opensource"] | sort: 'stars' | reverse) %}
+      {% for post in sorted_repos %}
         <li class="project">
           <h4 class="title">{{ post.title }}</h4>
           <div class="github-status">
