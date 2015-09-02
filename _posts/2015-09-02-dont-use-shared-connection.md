@@ -13,6 +13,7 @@ Indeed at first glance, it seemed to work well, we could use `DatabaseCleaner` (
 
 Then we started seeing the odd failure. It wasn't consistent, (which should have been an immediate red flag) so we kind of just ignored them and retried on the CI server.
 
+
 After reading through the comment thread on that gist, we saw Mike Perham mention a race condition, which would *maybe* explain our random failures. So we modified our shared connection monkeypatch to look like this:
 
 ```ruby
