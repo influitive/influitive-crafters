@@ -19,9 +19,9 @@ While there are a lot of more popular libraries for Flux and for immutability. I
 
 If you find you need to switch, it much easier to start with these options and swap out later than to not use some form of flux or immutability, because the concepts will be the same.
 
-#### Immutable Data
+### Immutable Data
 
-###### Freezer:
+#### Freezer:
 
   * uses a simple api
   * doesn't require getters for accessing data
@@ -141,7 +141,6 @@ So we can now make changes to the actual data structure and it is automatically 
 
 We need some more structure in order to persist. This is where the Reflux/Actions pattern comes in. If we modify our ```onClick``` method above...
 
-```
 ```
 // recipe.jsx
 

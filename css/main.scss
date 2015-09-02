@@ -12,6 +12,13 @@
 
 @import 'normalize';
 @import 'infl';
+@import 'syntax-highlighting';
+
+pre {
+  background-color: #FAFAFA;
+  padding: 25px;
+  border: solid 1px #CCC;
+}
 
 body {
   font-family: 'Open Sans';

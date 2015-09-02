@@ -10,3 +10,7 @@ github_username:  influitive
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
