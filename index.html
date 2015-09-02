@@ -57,26 +57,8 @@ layout: default
 
   <hr />
 
-  <section class='recent-posts' id='recent-posts'>
-    <h2 class='section-title'>RECENT BLOG POSTS</h2>
-
-    <ul class='posts'>
-      {% for post in site.categories["news"] %}
-        <li class="post">
-          <h2>
-            <a href='{{ post.url }}'>{{ post.title }}</a>
-          </h2>
-          <p class="description">{{ post.description }}</p>
-          <div class="details">
-            <span class="author">
-              <a href="{{ post.author_url }}">{{ post.author }}</a> -
-            </span>
-            <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-          </div>
-        </li>
-      {% endfor %}
-    </ul>
-  </section>
+  {% assign posts = site.categories["news"] %}
+  {% include posts.html title="Recent Blog Posts" posts=posts %}
 
   <section class='team' id='team'>
     <h2 class='section-title'>MEET THE CRAFTERS</h2>
