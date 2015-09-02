@@ -23,3 +23,11 @@ pre {
 body {
   font-family: 'Open Sans';
 }
+
+a {
+  color: #269dbb;
+
+  &:visited {
+    color: #269dbb;
+  }
+}
