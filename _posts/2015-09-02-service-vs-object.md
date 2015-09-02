@@ -1,6 +1,12 @@
 ---
 published: false
+layout: post
+author: Enric Ribas
+date: 2013-09-02T00:00:00.000Z
+categories: 
+  - news
 ---
+
 
 At Influitive, our RubyOnRails app is getting large, quite large, and we are struggling with staying agile as we accumulate technical debt. 
 
@@ -121,4 +127,3 @@ Without going into too much detail, it's much easier to test the code in the ser
 People will argue that you should start with the code in the object class and then move it out when it becomes of sufficient size. Unfortunately, the next time someone has to add one more little rule, it's a slippery slope and everything will just end up getting added to the user.rb file.
 
 So in my opinion, unless you know that something will stay very very small, make it a Service class. Another good rule of thumb is, if it sounds like a verb it should be a service.
-
