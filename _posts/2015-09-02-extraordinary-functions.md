@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 layout: post
 title: Extraordinary Functions ~ Learning to Write Well Structured JavaScript
 author: Leon Lukashevsky
