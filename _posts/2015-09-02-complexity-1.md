@@ -1,6 +1,12 @@
 ---
-published: false
+published: true
+layout: post
+author: Enric Ribas
+date: 2013-09-02T00:00:00.000Z
+categories: 
+  - news
 ---
+
 
 ## Rails, the toddler
 
