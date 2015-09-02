@@ -55,7 +55,7 @@ layout: default
     </ul>
   </section>-->
 
-  <hr />
+  <div class='branding-bar'></div>
 
   {% assign posts = site.categories["news"] %}
   {% include posts.html title="Recent Blog Posts" posts=posts %}
@@ -67,7 +67,7 @@ layout: default
       {% for post in site.categories["team"] %}
         <li class="member">
           <a href='{{ post.url }}'>
-            <img src="{{ post.image }}" />
+            <img src="/images/team/{{ post.name | slugify }}.jpg" />
             <span class="name">{{ post.name }}</span>
           </a>
         </li>

@@ -115,6 +115,7 @@ body {
 }
 
 .hero-unit {
+  padding-top: 40px;
   color: #fff;
   background-image: url("http://3mx24s1dzkew1x7chz4af8it19rs.wpengine.netdna-cdn.com/wp-content/themes/influitive/assets/css/img/presentation-bg.jpg");
 
@@ -713,12 +714,29 @@ body {
   }
 
   .post-header {
-    text-align: center;
-    border-bottom: 1px solid #cccccc;
+    overflow: hidden;
+    padding: 25px 0;
+    .post-title {
+      float: left;
+      width: 80%;
+    }
+    .post-meta {
+      float: left;
+      width: 20%;
+      text-align: center;
+      img {
+        max-height: 100px;
+        border-radius: 100%;
+        border: solid 1px #666;
+      }
+    }
 
     .post-title {
       font-family: 'Open Sans', sans-serif;
       font-weight: normal;
+      h1 {
+        margin: 0;
+      }
     }
 
     .author {

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Meet Patrick"
-name:   "Patrick Priestly"
+name:   "Patrick Priestley"
 image:  "images/team/patrick.jpg"
 date:   2015-07-21 15:38:50
 categories:
