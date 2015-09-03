@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: crafter
 title:  "Meet Eduardo"
 name:   "Eduardo Paleo"
-image:  "images/team/eduardo.jpg"
+image:  "eduardo-paleo.jpg"
 date:   2015-07-21 15:38:50
 categories:
   - team

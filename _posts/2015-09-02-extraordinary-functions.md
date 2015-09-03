@@ -3,6 +3,7 @@ layout: post
 title: Extraordinary Functions ~ Learning to Write Well Structured JavaScript
 author: Leon Lukashevsky
 date: 2015-01-02T15:38:50.000Z
+description : "If you are a web developer looking to broaden your horizons regarding JavaScript, to take the leap from using it for simple DOM scripting, to writing complex, well structured programs, I offer some modest advice..."
 categories:
   - news
 ---

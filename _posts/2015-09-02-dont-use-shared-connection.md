@@ -3,6 +3,7 @@ layout: post
 title:  "Don't Use a Shared Connection on Full Stack Capybara Tests"
 author: "Brad Robertson"
 date:   2015-09-02 15:38:50
+description : "A while back, Jose Valim posted a Gist on using a shared db connection for Capybara acceptance tests..."
 categories:
   - news
 ---

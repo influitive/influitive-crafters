@@ -9,7 +9,7 @@ layout: default
       <h1>Influitive Crafters</h1>
     </div>
   </section>
-  <div class='branding-bar'></div>
+  <div class="branding-bar"></div>
 
   <section class='mission'>
     <h2 class="section-title">Building products our customers <3.</h2>
@@ -27,9 +27,8 @@ layout: default
     </p>
   </section>
 
-  <!--<section class='events' id='events'>
-    <h2 class='section-title'>UPCOMING EVENTS</h2>
-
+  <section class='events' id='events'>
+    <h2 class='section-title'>Upcoming Events</h2>
     <ul class='event-list'>
       {% for post in site.categories["events"] %}
         <li class="event">
@@ -53,15 +52,14 @@ layout: default
         </li>
       {% endfor %}
     </ul>
-  </section>-->
+  </section>
 
-  <div class='branding-bar'></div>
-
+  <section class='recent-posts' id='recent-posts'>
   {% assign posts = site.categories["news"] %}
   {% include posts.html title="Recent Blog Posts" posts=posts %}
 
   <section class='team' id='team'>
-    <h2 class='section-title'>MEET THE CRAFTERS</h2>
+    <h2 class='section-title'>Meet The Crafters</h2>
 
     <ul class='team-list'>
       {% for post in site.categories["team"] %}
@@ -76,7 +74,7 @@ layout: default
   </section>
 
   <section class='open-source' id='open-source'>
-    <h2 class="section-title">OPEN SOURCE @ INFLUITIVE</h2>
+    <h2 class="section-title">Open Source @ Influitive</h2>
 
     <ul class='projects'>
       {% assign sorted_repos = (site.categories["opensource"] | sort: 'stars' | reverse) %}

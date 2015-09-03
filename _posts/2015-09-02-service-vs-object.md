@@ -3,18 +3,19 @@ published: true
 layout: post
 author: Enric Ribas
 date: 2013-09-02T00:00:00.000Z
-categories: 
+description : "At Influitive, our RubyOnRails app is getting large, quite large, and we are struggling with staying agile as we accumulate technical debt..."
+categories:
   - news
 ---
 
 
-At Influitive, our RubyOnRails app is getting large, quite large, and we are struggling with staying agile as we accumulate technical debt. 
+At Influitive, our RubyOnRails app is getting large, quite large, and we are struggling with staying agile as we accumulate technical debt.
 
 One of the arguments that we often have is where to place new code for new features. For a hypothetical example, let's write a new feature in two different ways and see what the pros and cons are for each approach.
 
 Suppose we want to have one of our users follow another user.
 
-### First Iteration 
+### First Iteration
 #### The Rails Way
 
 ```ruby
@@ -25,8 +26,8 @@ class User
     # pseudocode to actually follow
     self.followed_by << another
   end
-  
-... a lot more code 
+
+... a lot more code
 
 end
 ```
@@ -52,7 +53,7 @@ But what happens when the logic for a user following another becomes complicated
 
 Let's assume that the product team asks you to restrict following to people that are within a certain age group of each other.
 
-### Iteration2: Age restriction 
+### Iteration2: Age restriction
 #### The Rails Way
 
 ```ruby
@@ -65,7 +66,7 @@ class User
       self.followed_by << another
     end
   end
-... a lot more code 
+... a lot more code
 
 end
 ```
@@ -79,16 +80,16 @@ class User
       self.followed_by << another
     end
   end
-  
-  # you could create a method here but 
+
+  # you could create a method here but
   # now you have this random method that is only
   # used by one method floating around user.rb
-  def within_age(another) 
-    max_age_difference = 10 
+  def within_age(another)
+    max_age_difference = 10
     (self.age - another.age).abs < max_age_difference
   end
-  
-... a lot more code 
+
+... a lot more code
 
 end
 ```
@@ -103,24 +104,24 @@ struct UserFollow(to_follow, follower) do
       to_follow.followed_by << another
     end
   end
-  
-  private 
-  
+
+  private
+
   # these methods don't pollute the user.rb
   def max_age_difference
     10
   end
-  
+
   def within_age_limit
     (self.age - another.age).abs < max_age_difference
   end
 end
 ```
 
-Now, of course, a single line rule for checking the age is not the problem in a large app. The problem is when that logic gets more and more complex which will happen as your app grows. As the logic starts to grow for what it means to follow someone, there are more and more methods that need to be added to the user.rb file. One might ask if it really makes sense to have a class for users that deals with creating a user. persisting it to the database also deal with following users. 
+Now, of course, a single line rule for checking the age is not the problem in a large app. The problem is when that logic gets more and more complex which will happen as your app grows. As the logic starts to grow for what it means to follow someone, there are more and more methods that need to be added to the user.rb file. One might ask if it really makes sense to have a class for users that deals with creating a user. persisting it to the database also deal with following users.
 
 ### Testing
-Without going into too much detail, it's much easier to test the code in the service class compared to the code in the user.rb. The Rails way requires loading the entire Rails environment and lots of unrelated code. The service class can simply pass in two doubles and ensure that the right methods are called or not called depending on the ages of those doubles. 
+Without going into too much detail, it's much easier to test the code in the service class compared to the code in the user.rb. The Rails way requires loading the entire Rails environment and lots of unrelated code. The service class can simply pass in two doubles and ensure that the right methods are called or not called depending on the ages of those doubles.
 
 ### Conclusion
 

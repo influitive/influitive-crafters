@@ -3,6 +3,7 @@ layout: post
 title:  "An idea for React with a Flux-y data store"
 author: "Enric Ribas"
 date:   2015-09-02 15:38:50
+description : "React is an amazing advancement in web development. It creates an implementation that is simple to create, reuse, and understand..."
 categories:
   - news
 ---

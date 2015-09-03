@@ -3,7 +3,8 @@ published: true
 layout: post
 author: Enric Ribas
 date: 2013-09-02T00:00:00.000Z
-categories: 
+description : "In a previous blog post, I tried to describe some of the problems of using Rails with very large applications. In this post, I would like to take a look at a more concrete example, and perhaps find one possible solutions..."
+categories:
   - news
 ---
 
@@ -29,17 +30,17 @@ In Rails, you would have Tag, Tagging, and Band models. For the form to work you
 
 ```ruby
 # app/models/band.rb
- 
+
 class Band < ActiveRecord::Base
- 
+
   attr_accessible :name, :tag_list
   attr_reader :tag_list
- 
+
   has_many :taggings
   has_many :tags, through: :taggings
- 
+
   validates_presence_of :name
- 
+
   def tag_list=(form_tags)
     extract_tags(form_tags).each do |tag_name|
       tag     = Tag.find_or_create_by_name name: tag_name
@@ -47,37 +48,37 @@ class Band < ActiveRecord::Base
       self.taggings << tagging
     end
   end
- 
+
 private
- 
+
   def extract_tags(string)
     string.split(/ |,/).reject(&:blank?)
   end
- 
+
 end
 ```
 
 ```ruby
 # app/models/tag.rb
- 
+
 class Tag < ActiveRecord::Base
- 
+
   attr_accessible :name
- 
+
   has_many :taggings
   has_many :bands, through: :taggings
- 
+
 end
 ```
 
 ```ruby
 # app/models/tagging.rb
- 
+
 class Tagging < ActiveRecord::Base
- 
+
   belongs_to :tag
   belongs_to :band
- 
+
 end
 ```
 
@@ -89,14 +90,14 @@ with something like
 
 _Band.find\_or\_initialize\_by\_name_
 
-that checks whether a band already exists. Otherwise the controller is unchanged. 
+that checks whether a band already exists. Otherwise the controller is unchanged.
 
 ```ruby
 # app/controllers/band_controller.rb
- 
+
 def create
   @band = Band.find_or_initialize_by_name params[:band][:name]
- 
+
   respond_to do |format|
     if @band.save
       format.html { redirect_to @band, notice: 'Band was successfully created.' }
@@ -135,38 +136,38 @@ Our models are very simple. The way they should be and just deal with database p
 
 ```ruby
 # app/models/band.rb
- 
+
 class Band < ActiveRecord::Base
- 
+
   attr_accessible :name, :tag_list
- 
+
   has_many :taggings
   has_many :tags, through: :taggings
- 
+
 end
 ```
 
 ```ruby
 # app/models/tag.rb
- 
+
 class Tag < ActiveRecord::Base
- 
+
   attr_accessible :name
- 
+
   has_many :taggings
   has_many :bands, through: :taggings
- 
+
 end
 ```
 
 ```ruby
 # app/models/tagging.rb
- 
+
 class Tagging < ActiveRecord::Base
- 
+
   belongs_to :tag
   belongs_to :band
- 
+
 end
 ```
 
@@ -174,13 +175,13 @@ In the controller, you initialize a new service object passing in all the params
 
 ```ruby
 # app/controllers/band_controller.rb
- 
+
 def create
   @band = BandCreator.new params[:band]
- 
+
   if @band.validate
     @band.save
- 
+
     redirect_to band_path(@band.id), notice: 'Band was successfully created.'
   else
     render action: "new"
@@ -192,26 +193,26 @@ The bulk of the effort is contained in the service object where you want it. The
 
 ```ruby
 # app/services/band_creator.rb
- 
+
 class BandCreator
- 
+
   attr_accessor :band, :tag_list, :errors
   delegate :id, to: :band
- 
+
   def initialize(params)
     @band     = Band.find_or_initialize_by_name params[:name]
     @tag_list = extract_tags params[:tag_list]
     @errors   = {}
   end
- 
+
   def validate
     if band.name.empty?
      errors[:name] = 'A band requires a name.'
     end
- 
+
     errors.blank?
   end
- 
+
   def save
     # TODO yes, in a transaction would be better
     tag_list.each do |tag_name|
@@ -221,15 +222,15 @@ class BandCreator
     end
     band.save
   end
- 
+
 private
- 
+
   def extract_tags(string)
     return unless string
- 
+
     string.split(/ |,/).reject(&:blank?)
   end
- 
+
 end
 ```
 
@@ -259,38 +260,38 @@ Our models are basically the same, and wonderfully simple.
 
 ```ruby
 # app/models/band.rb
- 
+
 class Band < ActiveRecord::Base
- 
+
   attr_accessible :name, :tag_list
- 
+
   has_many :taggings
   has_many :tags, through: :taggings
- 
+
 end
 ```
 
 ```ruby
 # app/models/tag.rb
- 
+
 class Tag < ActiveRecord::Base
- 
+
   attr_accessible :name
- 
+
   has_many :taggings
   has_many :bands, through: :taggings
- 
+
 end
 ```
 
 ```ruby
 # app/models/tagging.rb
- 
+
 class Tagging < ActiveRecord::Base
- 
+
   belongs_to :tag
   belongs_to :band
- 
+
 end
 ```
 
@@ -298,11 +299,11 @@ So each controller is connected to a UseCaseModel, which is actually an ActiveMo
 
 ```ruby
 class CreateABandController << InheritedResources::Base
- 
+
   def create
     create! { band_path }
   end
- 
+
 end
 ```
 
@@ -310,53 +311,53 @@ The heavy lifting this time is in the use case object.
 
 ```ruby
 # app/use_cases/create_a_band.rb
- 
+
 class CreateABand
 # This would be moved into gem or lib, or ughh... superclass---
   include ActiveModel::Validations
   include ActiveModel::Conversion
   extend ActiveModel::Naming
- 
+
   def initialize(attributes = {})
     attributes.each do |name, value|
       send("#{name}=", value)
     end
   end
- 
+
   def persisted?
     false
   end
 #------------------------------------
- 
+
 # Allowed Form Fields
   attr_accessor :name, :tag_list
- 
+
 # Validations
   validates_presence_of :name
- 
+
 # Attribute Formatters
   def tags
     tag_list.split(/ |,/).reject(&:blank?)
   end
- 
+
 # Persisting
   def save
     # Yes, again in transaction
     if valid?
       band = Band.find_or_create_by_name name
- 
+
       tags.each do |tag_name|
         tag     = Tag.find_or_create_by_name tag_name
         tagging = Tagging.find_or_initialize_by_tag_id_and_band_id tag.id, band.id
         band.taggings << tagging
       end
- 
+
       band.save!
- 
+
       true
     end
   end
- 
+
 end
 ```
 

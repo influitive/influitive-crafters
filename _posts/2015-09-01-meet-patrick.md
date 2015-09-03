@@ -1,8 +1,8 @@
 ---
-layout: post
+layout: crafter
 title:  "Meet Patrick"
 name:   "Patrick Priestley"
-image:  "images/team/patrick.jpg"
+image:  "patrick-priestley.jpg"
 date:   2015-07-21 15:38:50
 categories:
   - team

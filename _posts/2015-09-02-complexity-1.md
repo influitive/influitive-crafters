@@ -3,7 +3,8 @@ published: true
 layout: post
 author: Enric Ribas
 date: 2013-09-02T00:00:00.000Z
-categories: 
+description : "Ruby on Rails has been an amazing revolution in developing web applications. It has transformed the way we work and has introduced many of us to new concepts like testing and REST and has truly advanced the industry..."
+categories:
   - news
 ---
 
@@ -27,19 +28,19 @@ contact.rb
 ```ruby
 before_validation :download_remote_image, :if => :image_url_provided?
 before_validation :set_default_name
- 
+
 after_destroy :clean_challenge_flags
 after_create :set_default_level
 before_save  :update_invitation_flags
 before_save(:if => :update_user)  { User.update(user_id, email: email) }
- 
+
 validates :name, :presence => true
 validates :email, format: /^(.+@.+\..+|)$/, uniqueness: { :case_sensitive => false }, presence: true
 validates :type, presence: true, inclusion: {:in => ['Prospect', 'Advocate', 'Corporate']}
- 
+
 validates_presence_of :image_remote_url, if: :image_url_provided?,
   message: 'is invalid or inaccessible'
- 
+
 validate :salesforce_id_length #salesforce allow two different lengths. thanks salesforce!
 def salesforce_id_length
   ... you get the idea ...
@@ -54,7 +55,7 @@ validates_presence_of :stage unless: closed?
 validates_with Validators::Stages::ActivityValidator, if: advancing
 validates :prospect, presence: true, unless: :template?,
   if: ->{|c| c.challenge_type_code == 'reference'}
- 
+
 validate  :corporate_confirmation_stage_cannot_be_first
 def corporate_confirmation_stage_cannot_be_first
   first_stage = stages.reject(&:marked_for_destruction?).sort_by(&:position).first
