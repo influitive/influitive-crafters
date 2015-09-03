@@ -791,7 +791,7 @@ body {
   }
 
   @media (min-width: 401px) and (max-width: 800px) {
-    width: 400px;
+    width: 90%;
   }
 
   @media (min-width: 801px) {
@@ -802,13 +802,35 @@ body {
     overflow: hidden;
     padding: 25px 0;
     .post-title {
-      float: left;
-      width: 80%;
+      @media (max-width: 500px) {
+        width: 100%;
+      }
+
+      @media (min-width: 501px) and (max-width: 800px) {
+        width: 100%;
+      }
+
+      @media (min-width: 801px) {
+        float: left;
+        width: 80%;
+      }
     }
     .post-meta {
-      float: left;
-      width: 20%;
       text-align: center;
+
+      @media (max-width: 500px) {
+        width: 100%;
+      }
+
+      @media (min-width: 501px) and (max-width: 800px) {
+        width: 100%;
+      }
+
+      @media (min-width: 801px) {
+        float: left;
+        width: 20%;
+      }
+
       img {
         max-height: 100px;
         border-radius: 100%;
@@ -833,6 +855,12 @@ body {
           color: #197097;
         }
       }
+    }
+  }
+
+  .post-content {
+    img {
+      width: 100%;
     }
   }
 }
