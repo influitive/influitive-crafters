@@ -3,6 +3,7 @@ published: false
 ---
 
 
+
 If I had to describe our agile process in a few words, I'd say we're non-denominational Agile. We leave a lot up to our individual squads in terms of how they want to operate. One thing we do hold sacred, however, is the retrospective meeting.
 
 If you're not doing a retrospective meeting with your team, [you're doing it wrong](http://www.doingitwrong.com/ "More things done wrong").
@@ -33,4 +34,3 @@ Both meetings run pretty similarly, and we've developed a structure that works p
 5. Once we have agreement, **we stop**. It's very tempting to try and talk about multiple things, particularly if it's been really bugging someone. It's usually a mistake. Think of your process as a system to be tweaked - you can't really measure how well a particular change worked when you're making 5 changes at the same time.
 
 That's really all there is to it. By constantly iterating on your process as well as your product, I think you'll find your team is able to work far more effectively together.
-
