@@ -1,11 +1,12 @@
 ---
-published: false
+published: true
 layout: post
 author: Ryan Brunner
-date: 2013-09-04T00:00:00.000Z
+date: {}
 categories: 
   - news
 ---
+
 
 
 
