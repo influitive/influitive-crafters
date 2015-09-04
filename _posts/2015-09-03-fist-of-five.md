@@ -1,6 +1,12 @@
 ---
 published: false
+layout: post
+author: Ryan Brunner
+date: 2013-09-04T00:00:00.000Z
+categories: 
+  - news
 ---
+
 
 
 Making simple decisions can counter-intuitively be one of the most difficult things to accomplish on a team.
