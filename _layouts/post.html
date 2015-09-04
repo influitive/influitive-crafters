@@ -53,4 +53,8 @@ layout: default
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
+  {% assign posts = site.categories["news"] %}
+  {% include posts.html title="Related Posts" posts=posts limit=3 %}
+
+
 </div>
