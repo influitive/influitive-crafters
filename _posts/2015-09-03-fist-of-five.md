@@ -35,7 +35,7 @@ Simple decisions often turn into these meandering conversations, where the conve
 
 ## Fist of Fives
 
-[Fist of Five](http://www.agileforall.com/2014/09/learning-with-fist-of-five-voting/) is a method to help make simple decisions (where the decision can be expressed as a simple yes / no proposals among medium-sized groups. Basically the idea is that everyone raises between 1 and 5 fingers simultaneously, with each count of fingers representing their feelings to the proposal:
+[Fist of Five](http://www.agileforall.com/2014/09/learning-with-fist-of-five-voting/) is a method to help make simple decisions (where the decision can be expressed as a simple yes / no proposal) among medium-sized groups. Everyone raises between 1 and 5 fingers simultaneously (think of it like a mass game of Rock-Paper-Scissors), with each count of fingers representing their feelings towards the proposal:
 
 - **1 finger** - I have serious problems with this proposal. I cannot buy into this.
 - **2 fingers** - I have concerns with some aspects of this proposal that I would like discussion on prior to this being accepted.
@@ -45,10 +45,10 @@ Simple decisions often turn into these meandering conversations, where the conve
 
 We take a fist of five whenever a proposal is made - it allows us to quickly move past issues that everyone is OK with and focus on the discussions that actually require some consensus building.
 
-- If a proposal is universally 3 or above, we do it - end of discussion.
-- If a proposal has a **single** 1, that person **must** be convinced or an alternate proposal must be made.
-- If a proposal has 2s, discussion should take place, but something widely agreed on by the team with a single 2 can still go through.
+- If the response to the proposal is universally 3 or above, we do it - end of discussion.
+- If the response to the proposal has a **single** 1, that person **must** be convinced or an alternate proposal must be made.
+- If the response to the proposal has 2s, discussion should take place, but something widely agreed on by the team with a single 2 can still go through.
 
-Fist of fives are a really quick way to establish and build consensus, because it gives people the freedom to express that they have some reservations while still being able to get behind the idea. Consensus is often confused with unanimity for exactly this reason - when people are forced into a flat "yes / no", things get bogged down and there's always an effort to include everyone's opinions at all cost - leading to "design by committee" type behaviours.
+Fist of fives are a really quick way to establish and build consensus, because it gives people the freedom to express that they have some reservations while still being able to get behind the idea. Consensus is often confused with unanimity for exactly this reason - when people are forced into a flat "yes / no", things get bogged down and there's always an effort to include everyone's opinions at all cost - leading to "design by committee" type behaviors.
 
-I really recommend trying out Fist of Fives with your team. It can seem cheesy at first but can be really effective once you get into the habit.
+I really recommend trying out Fist of Fives with your team. It can seem awkward at first but can be really effective once you get into the habit.
