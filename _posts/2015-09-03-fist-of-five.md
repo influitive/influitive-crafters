@@ -4,6 +4,7 @@ layout: post
 title: How We Work: Fist of Fives
 author: Ryan Brunner
 date: 2015-09-04
+description : "Making simple decisions can counter-intuitively be one of the most difficult things to accomplish on a team."
 categories:
   - news
 ---
