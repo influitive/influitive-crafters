@@ -2,8 +2,8 @@
 published: true
 layout: post
 author: Ryan Brunner
-date: {}
-categories: 
+date: 2015-09-04
+categories:
   - news
 ---
 
@@ -14,7 +14,7 @@ Making simple decisions can counter-intuitively be one of the most difficult thi
 
 [Parkinson's Law of Triviality](https://en.wikipedia.org/wiki/Parkinson%27s_law_of_triviality) (you probably know it by the term "bike-shedding") famously states:
 
-> The time spent on any item of the agenda will be in inverse proportion to the 
+> The time spent on any item of the agenda will be in inverse proportion to the
 > sum [of money] involved.
 
 Generalized, what this is saying is that **simple decisions** are often **harder to get consensus on**. This makes sense, if you think about it. When a proposed solution is complex and difficult to understand, the assumption is that a lot of thought was put into this proposal, and people are just plain less likely to have enough knowledge or context to provide useful feedback. When you deal with a simple problem it's a lot easier to have an opinion, and want to contribute to the discussion.
@@ -41,10 +41,10 @@ Simple decisions often turn into these meandering conversations, where the conve
 - **4 fingers** - I'm good with this proposal.
 - **5 fingers** - I love this proposal and will champion it.
 
-We take a fist of five whenever a proposal is made - it allows us to quickly move past issues that everyone is OK with and focus on the discussions that actually require some consensus building. 
+We take a fist of five whenever a proposal is made - it allows us to quickly move past issues that everyone is OK with and focus on the discussions that actually require some consensus building.
 
-- If a proposal is universally 3 or above, we do it - end of discussion. 
-- If a proposal has a **single** 1, that person **must** be convinced or an alternate proposal must be made. 
+- If a proposal is universally 3 or above, we do it - end of discussion.
+- If a proposal has a **single** 1, that person **must** be convinced or an alternate proposal must be made.
 - If a proposal has 2s, discussion should take place, but something widely agreed on by the team with a single 2 can still go through.
 
 Fist of fives are a really quick way to establish and build consensus, because it gives people the freedom to express that they have some reservations while still being able to get behind the idea. Consensus is often confused with unanimity for exactly this reason - when people are forced into a flat "yes / no", things get bogged down and there's always an effort to include everyone's opinions at all cost - leading to "design by committee" type behaviours.
