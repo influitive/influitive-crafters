@@ -1,6 +1,7 @@
 ---
 published: true
 layout: post
+title: How We Work: Fist of Fives
 author: Ryan Brunner
 date: 2015-09-04
 categories:
