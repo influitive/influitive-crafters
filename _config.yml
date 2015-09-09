@@ -3,7 +3,6 @@ title: Influitive Crafters
 email: dev@influitive.com
 description: > # this means to ignore newlines until "baseurl:"
   Influitive builds tools to help build and mobilize armies of advocates. We feel that the most honest marketing comes not from what a company says, but from the genuine enthusiasm and love their fans and happy users have for their products. Our engineering team strives to create products that people love as well, by putting thought and care behind everything that we do.
-- See more at: http://influitive.io/#sthash.Rg53jWeO.dpuf
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://influitive.io" # the base hostname & protocol for your site
 twitter_username: influitive
