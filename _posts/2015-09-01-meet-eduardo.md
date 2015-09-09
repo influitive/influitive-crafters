@@ -1,8 +1,8 @@
 ---
 layout: crafter
 title:  "Meet Eduardo"
-name:   "Eduardo Paleo"
-image:  "eduardo-paleo.jpg"
+name:   "Eduardo Poleo"
+image:  "eduardo-poleo.jpg"
 date:   2015-07-21 15:38:50
 categories:
   - team
