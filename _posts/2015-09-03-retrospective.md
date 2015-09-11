@@ -1,6 +1,14 @@
 ---
-published: false
+published: true
+layout: post
+title: "How We Work: Retrospectives"
+author: Ryan Brunner
+date: 2015-09-11T00:00:00.000Z
+description: "If I had to describe our agile process in a few words, I'd say we're non-denominational Agile. We leave a lot up to our individual squads in terms of how they want to operate. One thing we do hold sacred, however, is the retrospective meeting."
+categories: 
+  - news
 ---
+
 
 
 
