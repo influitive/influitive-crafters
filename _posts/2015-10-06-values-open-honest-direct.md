@@ -29,7 +29,7 @@ An example of open communication across teams is the chart on the wall behind fi
 
 ![Chart on the Wall Behind Finance]({{site.baseurl}}/images/posts/finance-chart.jpg)
 
-The most important area of communication to me is around personal development.  In my one-on-ones and my work, goals, and progress discussed candidly during the year and that makes it easy to have course corrections and adjust to changing circumstances.  The *directness* of communication helps with focus, and the *openness* and *honesty* during the yeear means there aren’t surprises in the review.
+The most important area of communication to me is around personal development.  In my one-on-ones and my work, goals, and progress discussed candidly during the year and that makes it easy to have course corrections and adjust to changing circumstances.  The *directness* of communication helps with focus, and the *openness* and *honesty* during the year means there aren’t surprises in the review.
 
 Developing a straightforward and honest communication habit has benefits outside Influitive too.  It is much easier to work with partners and customers in an atmosphere of trust, and *open*, *direct*, and *honest* communication is a good foundation for trust.
 
