@@ -1,13 +1,14 @@
 ---
-published: false
+published: true
 layout: post
 title: "Influitive Values: Open, Honest, and Direct Communication"
 author: Mike Stok
-date: 2015-10-06
-description : "A look at one of Influitive’s values and its consequences."
-categories:
+date: 2015-10-06T00:00:00.000Z
+description: A look at one of Influitive’s values and its consequences.
+categories: 
   - news
 ---
+
 
 For me *open, honest, and direct communication* is the cultural
 underpinning which allows Influvians to work well together and
