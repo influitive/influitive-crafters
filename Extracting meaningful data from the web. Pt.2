@@ -2,11 +2,12 @@
 published: false
 ---
 
-On my last post I went through how ...
+On my previous post we scraped some data and dumped it into three different endpoints, effectively converting our simple application into a JSON api. In this post I am going to show how we can use use AJAX and D3 to retrieve this data and render our view elements, which in this case are going to be awesome dynamic plots.
 
-As explained in the previous plot we were going to dump JSON data into three different endpoints. Additionally, we are also going to need an additional endpoint through which we are going to sever all our assets (js and css files) and render the resulting html. Our route file could then look something like this:
+In addition to our JSON end-points we are also going to need an endpoint to bootstrap our html and all our assets (js and css files). Our route file will then look similar to this.
 
 ```ruby
+#routes.rb
 root 'staff#vertical'
 #Main route where we are going to bootstrap our application
 get 'vertical' => 'staff#vertical'
@@ -19,6 +20,7 @@ get 'administrative_staff' => 'averages#administrative_staff', defaults: { forma
 We want to link each of the route to a radio button so that the users can toggle the data they want to see. So we are going to add a radio button menu to our main view:
 
 ```html
+<!-- views/staff/vertical.html.erb -->
 <%= form_tag() do %>
   <%= radio_button_tag(:average, "all_salaries", true, class: 'choice') %>
   <%= label_tag(:average_all_salaries, "All Salaries") %>
@@ -29,11 +31,11 @@ We want to link each of the route to a radio button so that the users can toggle
 <% end %>
 ```
 
-We don't really need to set any specific form action/route because we are not going submit the form. Instead we are going to hijack the click event and then perform an AJAX call to retrieve the correspoding dataset. 
+We don't really need to set any specific form action/route in the ```form_tag``` because we are not going submit the form. Instead we are going to hijack the click event and then perform an AJAX call to retrieve the correspoding dataset. 
 
-Note how the radio buttons have a class ```choice``` and the values are set to match routes where we are dumping the JSON data (e.g ```all_salaries```). This is intentional as we want to simplify the logic of our JS code a little bit. 
+Note how the radio buttons have a class ```choice``` and the values are set to match the routes where we are dumping the JSON data (e.g ```all_salaries```). This is intentional as we want to simplify the logic of our javascript code a little bit. 
 
-We can then start writing our javascript code:
+We can then write the ajax code that we are going to use to retrive the data from the JSON endpoints.
 
 ```javascript
 $(function() {
@@ -62,13 +64,12 @@ $(function() {
   }
 }
 ```
-
-Because of the way D3 works we will need to use our ```ajax_call``` function in two different cases: when we first ```draw``` the plot, and when we ```update``` it after the user clicks one of the radio buttons. In order to dry out our code a bit we can make the ```ajax_call``` accept a callback function for each case.
+Because of the way D3 works we will need to use our ```ajax_call``` function in two different cases: when we first ```draw``` the plot, and when we ```update``` it after the user clicks one of the radio buttons. In order to dry out our code we can make the ```ajax_call``` accept a callback function for each case.
 
 Now that we have wired up the data retrieval to the radio buttons, we can start writting our actual D3 code. First we will need to do define some general parameters and define some reusable functions:
 
 <small>
-NOTE: I do not intent to explain how the D3 library works in this post. This is a very big topic deserving of a [book](http://chimera.labs.oreilly.com/books/1230000000345/index.html). I will add the code in this post for completeness but the idea of this specific series is to show how we can we deviate from the regular rails rendering to use more interactive js libraries.
+NOTE: I do not intent to go into details on how D3 works in this post. This is a very big topic deserving of a entire [book](http://chimera.labs.oreilly.com/books/1230000000345/index.html). I will add the code in this post for completeness but the idea of this specific series is to show how we can we deviate from the convential rails rendering to use more interactive js libraries such D3.
 </small>
 
 ```javascript
@@ -84,13 +85,13 @@ var yMargin = 0
 
 var rectMargin = 5
 
-//Caculates the scales used for x, y and yAxis values
+//Caculates the scales used for x, y and yAxis
 function calculateScales(dataSet) {
   var xScale = d3.scale.linear()
                             .domain([0, 246000])
                             .range([xPadding, w - xMargin - xPadding])
   
-//This scale will ensure that the rectangles are placed in the right spot along the y axis
+//This scale ensures that the rectangles will be placed in the right spot along the y axis
   var yScale = d3.scale.ordinal()
                             .domain(d3.range(dataSet.length))
                             .rangeRoundBands([0, (h - 1.2 * yPadding )], 0.05)
@@ -119,9 +120,9 @@ function calculateAxes(xScale, yAxisScale) {
   return [xAxis, yAxis]
 }
 ```
-Eveytime we update our plot we will need to recalculate the scales and axes to account for differences in each dataset (number of points, max values, etc). Thus, it makes sense to create these reusable functions so that we are not repeating this code all over.
+Eveytime we update our plot we will need to re-calculate the scales and axes to account for differences in each dataset (number of points, max values, etc). Thus, it makes sense to create these reusable functions so that we are not repeating this code all over place.
 
-With the set up in place we can write up our ```draw``` and ```update``` functions which are the one that we will ultimately do the heavylifting when drawing the plots.
+With the set up in place we can write up our ```draw``` and ```update``` functions which ultimately will do the heavylifting when drawing the plots.
 
 ```javascript
   function draw(dataSet) {
@@ -197,7 +198,7 @@ With the set up in place we can write up our ```draw``` and ```update``` functio
           .call(yAxis);
   }
 ```
-The update function will get triggered everytime the user clicks on a radio button. It main responsability will be to dynamically update the rectangles, axis and scales to accomodate for changes in the dataset.
+The update function will get triggered everytime the user clicks on a radio button. Its main responsability will be to dynamically update the rectangles, axis and scales to accomodate for changes in the ```dataSet```.
 
 ```javascript
 function update(dataSet) {
@@ -212,16 +213,18 @@ function update(dataSet) {
     var xAxis = axes[0]
     var yAxis = axes[1]
 	
-    //We need to use the key function since our data is in a JSON format to help D3 keep track of the order of the data. For more info:
-    
+    //Since our data is in JSON format we need to define a key function to help D3 keep track of data points order. For more info check:
+//http://chimera.labs.oreilly.com/books/1230000000345/ch09.html#_data_joins_with_keys
     var key = function(d) {
       return d.university;
     };
-
+	
+// Select all the existing rectangles before updating the the 
     var rects = d3.select(".rects")
                   .selectAll("rect")
                   .data(dataSet, key)
-
+                  
+// Adds additional rectangles if the dataset contains additional points and applies the corresponding attributes
     rects.enter()
       .append("rect")
       .attr("x", xPadding)
@@ -234,7 +237,15 @@ function update(dataSet) {
       .attr("height", function () {
         return h/dataSet.length - rectMargin
       })
-
+      
+// Remove the extra rextangles if the current dataset is smaller than the previous one
+    rects.exit()
+      .transition()
+      .duration(500)
+      .attr("x", w)  // <-- Exit stage left
+      .remove();
+      
+// Updates all the rectanges to accomodate the new data passed in
     rects.transition()
       .duration(500)
       .attr("x", xPadding)
@@ -248,18 +259,13 @@ function update(dataSet) {
         return h/dataSet.length - rectMargin
       })
 
-    rects.exit()
-      .transition()
-      .duration(500)
-      .attr("x", w)  // <-- Exit stage left
-      .remove();
 
-/////////Updating labels /////////////////
-
+// Select all the existing labels
     var labels = d3.select('.labels')
                      .selectAll('.amount')
                      .data(dataSet, key)
-
+                     
+//Adds additional labels if the dataset contains additional points and applies the corresponding attributes
     labels.enter()
             .append("text")
             .text(function (d) {
@@ -276,7 +282,15 @@ function update(dataSet) {
             .attr("font-family", "sans-serif")
             .attr("font-size", "11px")
             .attr("fill", "red")
-
+            
+// Remove the extra labels if the current dataset is smaller than the previous one
+	labels.exit()
+            .transition()
+            .duration(500)
+            .attr("x", w)  // <-- Exit stage left
+            .remove();
+            
+// Updates all labels to accomodate the new data passed in
     labels.transition()
            .duration(500)
            .text(function (d) {
@@ -294,13 +308,9 @@ function update(dataSet) {
            .attr("font-size", "11px")
            .attr("fill", "red");
 
-    labels.exit()
-            .transition()
-            .duration(500)
-            .attr("x", w)  // <-- Exit stage left
-            .remove();
+    
 
-///////////Updating axis///////////////
+//Updates the axes
     svg.select(".x.axis")
           .transition()
           .duration(1000)
@@ -312,5 +322,8 @@ function update(dataSet) {
           .call(yAxis);
   }
 ```
+You can check out the final result in here and the full code is on this repo.
+Hope you guys enjoyed this short series on Rails/JSON/APIs and JS frontend rendering!
 
+Happy coding. 
 
