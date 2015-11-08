@@ -1,7 +1,7 @@
 ---
 layout: post
 published: false
-title:  "Extracting meaningful data from the web. Pt.2"
+title:  "Plotting data for the web"
 author: "Eduardo Poleo"
 date:   2015-10-20
 description : "Integrating rails APIs with js dynamic frameworks to create interactive sites"
@@ -127,7 +127,7 @@ function calculateAxes(xScale, yAxisScale) {
   return [xAxis, yAxis]
 }
 ```
-Every time we update our plot we will need to recalculate the scales and axes to account for differences in each dataset (number of points, max values, etc). Thus, it makes sense to create reusable functions so that we are not repeating this code all over place.
+Every time we update our plot we will need to recalculate the scales and axes to account for differences in each dataset (number of points, max values, etc). Thus, it makes sense to create reusable functions so that we are not repeating this code all over the place.
 
 With the set up in place we can write up our ```draw``` and ```update``` functions which ultimately will do the heavy-lifting when drawing the plots.
 
