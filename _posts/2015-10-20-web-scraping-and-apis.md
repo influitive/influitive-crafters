@@ -1,19 +1,20 @@
 ---
 layout: post
 published: false
-title:  "Extracting meaningful data from the web. Pt.1"
+title:  "Extracting meaningful data from the web"
 author: "Eduardo Poleo"
 date:   2015-10-20
 description : "Integrating rails APIs with js dynamic frameworks to create interactive sites"
 categories:
   - development
 ---
-At influitive great part of our app uses rails as JSON API that integrates with [React](https://facebook.github.io/react/) at certain endpoints to generate highly interactive views. In this series of posts I am going to show how we can use process to generate interactive graphics using the [D3](http://d3js.org/) library.
 
-The data that we are going to use corresponds to the [Public Salary Disclosure of Universities 2014](http://www.fin.gov.on.ca/en/publications/salarydisclosure/pssd/orgs-tbs.php?year=2014&organization=universities&page=1) in Ontario. In this first post we are going to gather this data by means of web-scraping and dump it as JSON in different endpoints. In the following post we'll use the D3 library to generate sleek web plots out of this data.
+At Influitive a great deal of our app dumps JSON data at certain endpoints; this data is then processed and integrated with [React](https://facebook.github.io/react/) to generate highly interactive views. In this and a subsequent post I am going to show how we can use a similar process to generate interactive graphics using rails and the [D3](http://d3js.org/) library.
+
+The data that we are going to use corresponds to the [Public Salary Disclosure of Universities 2014](http://www.fin.gov.on.ca/en/publications/salarydisclosure/pssd/orgs-tbs.php?year=2014&organization=universities&page=1) for Ontario. In this first post we are going to gather this data by means of web-scraping and dump it as JSON in different endpoints. In the following post we'll use the D3 library to generate dynamic web plots out of this data.
 
 ###### Mechanize, Rails and Web-Scraping
-We are going to use the [Mechanize](https://github.com/sparklemotion/mechanize) gem to gather our the data, but first we need to take a close look at the DOM structure we are about to scrape. Fortunately, the people of the Ontario goverment have created a nicely structured page that we can easily scrape. The snippet below shows the parts we really care about:
+We are going to use the [Mechanize](https://github.com/sparklemotion/mechanize) gem to gather our the data, but first we need to take a close look at the DOM structure we are about to scrape. Fortunately, the people of the Ontario government have created a nicely structured page that we can easily scrape. The snippet below shows the parts we really care about:
 
 ```html
 <thead>
@@ -48,7 +49,7 @@ We are going to use the [Mechanize](https://github.com/sparklemotion/mechanize) 
 There are few key things we need to note in here:
 * The data is paginated which means that we will need to extract the number of pagination links and iterate over them to obtain the data from each page.
 * Each row within the ```tbody``` maps to an individual's information although the structure is not 100% consistent because the ```university``` and the  ```title``` are wrapped inside span tags. So we will need to account for that in our script.
-* Finally, since we want to store all the data in our database, everytime we iterate over a full row we probably want to create a ```Staff``` record.
+* Finally, since we want to store all the data in our database, every time we iterate over a full row we probably want to create a ```Staff``` record.
 
 With this in mind we can proceed and write the following web scraper.
 
@@ -95,13 +96,15 @@ end
 **NOTE**: I am using the [xpath notation](https://en.wikipedia.org/wiki/XPath) to dig into the DOM structure. Just if you were wondering what things like ```"//thead/tr/td[2]/a"``` were.
 
 For the purpose of this study we want to calculate the average staff earning per university. Now if we take a closer look to our data we can see that the individuals that compose our records can generally be divided into two different groups: academic (professors) and administrative (non-professors). So we want to consider at least three different types of averages:
+
 *   ```overall_salaries``` Professors + Administrative
 *   ```professors_only``` Professors
 *   ```administrative_only``` Administrative
 
-Ideally, we want the data for each type of average being dumped as JSON into their own specific endpoint, so that users can easily filter the information they want to see. We could make the average calculations on the fly everytime the user decides to switch endpoints, but this will either require a complex query or looping through all the ```Staff``` records everytime both of which can be cumbersome and slow.
+Ideally, we want the data for each type of average being dumped as JSON into their own specific endpoint, so that users can easily filter the information they want to see. We could make the average calculations on the fly every time the user decides to switch endpoints. But this will either require a complex query or looping through all the ```Staff``` records every time, both of which can be cumbersome and slow.
 
 Instead, we could do these calculations right after finishing scrapping the data and have it ready available (one simple query away) for when the user decides to request it. We can then write the following:
+
 ```ruby
 #lib/tasks/scrape.rake
 def salary_averages(staff, use_case)
@@ -133,7 +136,8 @@ puts "------------>Calculating Administrative only<---------------"
 staff = Staff.where("title not like ?", "%Professor%")
 salary_averages(staff, "administrative_only")
 ```
-Finally, all we need to do is create three different end-points on the ```AverageController``` to which we are going to dump the information. We should also serialize the data so that we have an "easy to work with" format when we deal with the frontend.
+
+Finally, all we need to do is to create three different end-points on the ```AverageController``` to dump the information into. We should also serialize the data so that we have an "easy to work with" format when we deal with in the front-end.
 
 ```ruby
 #averages_controller.rb
