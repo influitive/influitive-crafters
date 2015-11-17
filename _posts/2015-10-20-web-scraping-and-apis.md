@@ -13,7 +13,7 @@ At Influitive a great deal of our app dumps JSON data at certain endpoints; this
 
 The data that we are going to use corresponds to the [Public Salary Disclosure of Universities 2014](http://www.fin.gov.on.ca/en/publications/salarydisclosure/pssd/orgs-tbs.php?year=2014&organization=universities&page=1) for Ontario. In this first post we are going to gather this data by means of web-scraping and dump it as JSON in different endpoints. In the following post we'll use the D3 library to generate dynamic web plots out of this data.
 
-###### Mechanize, Rails and Web-Scraping
+## Mechanize, Rails and Web-Scraping
 We are going to use the [Mechanize](https://github.com/sparklemotion/mechanize) gem to gather our the data, but first we need to take a close look at the DOM structure we are about to scrape. Fortunately, the people of the Ontario government have created a nicely structured page that we can easily scrape. The snippet below shows the parts we really care about:
 
 ```html
