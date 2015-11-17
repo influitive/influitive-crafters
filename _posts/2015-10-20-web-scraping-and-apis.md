@@ -1,12 +1,12 @@
 ---
 layout: post
-published: false
+published: true
 title:  "Extracting meaningful data from the web"
 author: "Eduardo Poleo"
-date:   2015-10-20
+date:   2015-11-17
 description : "Integrating rails APIs with js dynamic frameworks to create interactive sites"
 categories:
-  - development
+  - news
 ---
 
 At Influitive a great deal of our app dumps JSON data at certain endpoints; this data is then processed and integrated with [React](https://facebook.github.io/react/) to generate highly interactive views. In this and a subsequent post I am going to show how we can use a similar process to generate interactive graphics using rails and the [D3](http://d3js.org/) library.
@@ -49,7 +49,7 @@ We are going to use the [Mechanize](https://github.com/sparklemotion/mechanize) 
 There are few key things we need to note in here:
 * The data is paginated which means that we will need to extract the number of pagination links and iterate over them to obtain the data from each page.
 * Each row within the ```tbody``` maps to an individual's information although the structure is not 100% consistent because the ```university``` and the  ```title``` are wrapped inside span tags. So we will need to account for that in our script.
-* Finally, since we want to store all the data in our database, every time we iterate over a full row we probably want to create a ```Staff``` record.
+* Finally, since we want to store all the data in our database, every time we iterate over a full row we probably want to create a ```Staff``` record which is a Rails active record model.
 
 With this in mind we can proceed and write the following web scraper.
 
@@ -65,30 +65,29 @@ page = agent.get('http://www.fin.gov.on.ca/en/publications/salarydisclosure/pssd
 #Extracts all the pagination links over which we are going to iterate
 page_links = page.search("//thead/tr/td[2]/a")
 
+def cleaned_text(row, xpath)
+  row.at(xpath).text.strip
+end
+
+def money_value(row, xpath)
+  cleaned_text(row, xpath).tr("$,", "").to_f
+end
+
 page_links.each do |link|
-  #Clicks on the pagination link to go to the page to be scraped.
   page.link_with(text: "#{link.text}").click
 
-  # Extracts all the rows contained in the tbody element of the page
+  puts "------>Scraping results for page #{link.text}<-----------"
+  # row = agent.page.at('//tbody/tr[1]')
   rows = agent.page.search('//tbody/tr')
 
-  # Iterates over each row and extracts the relevant information with the right format
   rows.each do |row|
-    university = row.at('td[1]/span').text.strip
-    last_name =  row.at('td[2]').text.strip
-    name = row.at('td[3]').text.strip
-    title = row.at('td[4]/span').text.strip
-    salary = row.at('td[5]').text.strip.gsub(/[$\,]/, "").to_f
-    taxable_benefits = row.at('td[6]').text.strip.gsub(/[$\,]/, "").to_f
-
-    # Creates a staff record with the info previosly extracted.
     Staff.create(
-      university: university,
-      last_name: last_name,
-      name: name,
-      title: title,
-      salary: salary,
-      taxable_benefits: taxable_benefits
+      university: cleaned_text(row, 'td[1]/span'),
+      last_name: cleaned_text(row, 'td[2]'),
+      name: cleaned_text(row, 'td[3]'),
+      title: cleaned_text(row, 'td[4]/span'),
+      salary: money_value(row, 'td[5]'),
+      taxable_benefits: money_value(row, 'td[6]')
     )
   end
 end
