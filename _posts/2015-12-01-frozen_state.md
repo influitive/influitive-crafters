@@ -3,10 +3,11 @@ published: true
 layout: post
 author: Enric Ribas
 date: {}
-description: Frozen State
+description: "Command your State - Using commands and actions to modify your state"
 categories: 
   - news
 ---
+
 
 
 
