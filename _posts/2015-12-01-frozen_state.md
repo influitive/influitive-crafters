@@ -2,11 +2,12 @@
 published: true
 layout: post
 author: Enric Ribas
-date: 2015-12-01T00:00:00.000Z
+date: {}
 description: Frozen State
 categories: 
   - news
 ---
+
 
 
 
@@ -27,7 +28,8 @@ So, I was thinking, why not create a single endpoint on the server that accepts 
 > This is orthogonal to using something like GraphQL. It doesn't exclude or replace its use but it doesn't require it either. Adding GraphQL to this process would be quite easy.
 
 If you look at the example from my previous post...
-```
+
+```javascript
 // recipe.jsx
 
 var Actions = require('actions');
@@ -48,7 +50,7 @@ Previously, this would have made a call to a store method which then calls an ex
 
 You can now imagine that the Actions store could simply call an endpoint on the server with the method name and the data and all other "actions" would also hit the same endpoint. For simplicity, you might want to change the Actions call...
 
-```
+```javascript
   onClick: function (e) {
     Actions.command("changeName", {id: this.props.id, name: "New Recipe Name");
   }
@@ -56,7 +58,8 @@ You can now imagine that the Actions store could simply call an endpoint on the 
 ```
 
 The actions store would simply delegate to the endpoint.
-```
+
+```javascript
   ...
 
   onCommand: function (command, attrs) {
@@ -71,7 +74,7 @@ Once this is done, adding a new action would not require any changes to the stor
 
 On the server side (Rails) you would need a CommandController
 
-```
+```ruby
 class CommandsController < ApplicationController
   def create
     if CommandRunner.run(command, params[:body])
@@ -93,7 +96,7 @@ end
 
 If we wanted to get really fancy here, we could use something like [RailsDisco](https://github.com/hicknhack-software/rails-disco) for full event sourcing or use [CommandObjects](http://knewter.github.io/rails-on-objects-presentation/#intro) or use our own implementation for now.
 
-```
+```ruby
 class CommandRunner
   def self.run(command, params)
     runner = runners[command]
@@ -131,7 +134,7 @@ end
 
 > SideNote: CommandObject by Josh Adams, a nicer implementation of Command Objects
 
-```
+```ruby
 class StudentTransferCommandsController < LoggedInController
   def create
     transfer = StudentTransferCommand.new(params[:student_transfer_command])
@@ -182,7 +185,7 @@ Ideally, we would use something like Pusher to post back the data as it changes,
 
 The controller would of course have to return some data
 
-```
+```ruby
 class CommandsController < ApplicationController
   def create
     if id = CommandRunner.run(command, params[:body])
