@@ -3,13 +3,13 @@ layout: post
 published: false
 title:  "Plotting data for the web"
 author: "Eduardo Poleo"
-date:   2015-10-20
+date:   2015-12-01
 description : "Integrating rails APIs with js dynamic frameworks to create interactive sites"
 categories:
-  - development
+  - news
 ---
 
-On my previous post we scraped some data and dumped it into three different endpoints, effectively converting our simple application into a JSON api. In this post I am going to show how we can use use AJAX and D3 to retrieve this data and render our view elements, which in this case are going to be awesome dynamic plots.
+In my previous post we scraped some data and dumped it into three different endpoints, effectively converting our simple application into a JSON api. In this post I am going to show how we can use use AJAX and D3 to retrieve this data and render our view elements, which in this case are going to be awesome dynamic plots.
 
 In addition to our JSON end-points we are also going to need an endpoint to serve our html and assets (js and css files). Our route file can then look similar to this:
 
