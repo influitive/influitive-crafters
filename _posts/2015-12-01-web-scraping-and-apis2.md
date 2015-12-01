@@ -4,7 +4,7 @@ published: true
 title:  "Plotting data for the web"
 author: "Eduardo Poleo"
 date:   2015-12-01
-description : "Integrating rails APIs with js dynamic frameworks to create interactive sites"
+description : "Using the D3 library to create dynamic plots"
 categories:
   - news
 ---
@@ -48,8 +48,8 @@ We can then write the ajax code that we are going to use to retrieve the data fr
 $(function() {
   //Captures the click event
   $('.choice').click(function(e) {
-  	//extracts the value of the radio button that was clicked which corresponds
-    //to a JSON route.
+  	//extracts the value of the radio button that was clicked which
+    //corresponds to a JSON route.
     var url = e.target.defaultValue
     //makes the corresponding ajax call
     ajax_call(url, update)
@@ -62,9 +62,9 @@ $(function() {
      url: url,
      dataType: 'json',
      success: function (data) {
-     //The callback would be draw() or update() depending on whether we are
-     //drawing the plot for the first time or we are updating it after the user
-     // clicks a radio button.
+     //The callback would be draw() or update() depending on whether
+     //we are drawing the plot for the first time or we are updating
+     //it after the user clicks a radio button.
        callback(data["averages"])
      },
      error: function (result) {
@@ -83,7 +83,8 @@ NOTE: I do not intent to go into details on how D3 works in this post. This is a
 </small>
 
 ```javascript
-//Sets plot's dimensions and other relevant values as paddings and margins
+//Sets plot's dimensions and other relevant values as paddings
+//and margins
 var w = 1000
 var h = 1250
 
@@ -98,17 +99,17 @@ var rectMargin = 5
 //Caculates the scales used for x, y and yAxis
 function calculateScales(dataSet) {
   var xScale = d3.scale.linear()
-                            .domain([0, 246000])
-                            .range([xPadding, w - xMargin - xPadding])
+                       .domain([0, 246000])
+                      .range([xPadding, w - xMargin - xPadding])
 
-//This scale ensures that the rectangles will be placed in the right spot
-//along the y axis
+//This scale ensures that the rectangles will be placed in
+//the right spot along the y axis
   var yScale = d3.scale.ordinal()
-                            .domain(d3.range(dataSet.length))
-                            .rangeRoundBands([0, (h - 1.2 * yPadding )], 0.05)
+                       .domain(d3.range(dataSet.length))
+                       .rangeRoundBands([0, (h - 1.2 * yPadding )], 0.05)
 
-//This is an special scale for the yaxis which uses ordinal values corresponding
-// to the name of the universities
+//This is an special scale for the yaxis which uses ordinal
+//values corresponding to the name of the universities
   var yAxisScale = d3.scale.ordinal()
                             .domain(dataSet.map(function (d) {
                               return d.university
@@ -118,7 +119,8 @@ function calculateScales(dataSet) {
   return [xScale, yScale, yAxisScale]
 }
 
-//Calculates the plot axes using the previously defined scale values
+//Calculates the plot axes using the previously defined scale
+//values
 function calculateAxes(xScale, yAxisScale) {
   var xAxis = d3.svg.axis()
                   .scale(xScale)
@@ -140,12 +142,12 @@ With the set up in place we can write up our ```draw``` and ```update``` functio
   function draw(dataSet) {
 	//Appends a svg element and sets its dimensions using w and h
     svg = d3.select('body')
-                  .append('svg')
-                  .attr("width", w)
-                  .attr("height", h)
-                  .attr("class", "graph")
-                  .append('g')
-                  .attr("transform", "translate(" + xMargin + "," + yMargin + ")")
+            .append('svg')
+            .attr("width", w)
+            .attr("height", h)
+            .attr("class", "graph")
+            .append('g')
+            .attr("transform", "translate(" + xMargin + "," + yMargin + ")")
     //Calculates the scales with the initial data set
     //(in this case the overall_salaries data)
     var scales = calculateScales(dataSet)
@@ -158,9 +160,9 @@ With the set up in place we can write up our ```draw``` and ```update``` functio
     var xAxis = axes[0]
     var yAxis = axes[1]
 
-    //Bounds each data point to a rectangle and then sets rectangle properties
-    //(enter selection for more info about data join and selections
-    //check http://bost.ocks.org/mike/join/
+    //Bounds each data point to a rectangle and then sets rectangle
+    // properties (enter selection for more info about data
+    // join and selections check http://bost.ocks.org/mike/join/
     rects = svg.append('g')
                 .attr("class", "rects")
                 .selectAll('rect')
@@ -178,7 +180,9 @@ With the set up in place we can write up our ```draw``` and ```update``` functio
                 .attr("height", function () {
                   return h/dataSet.length - rectMargin
                 })
-	//Bounds each data point to a text label and sets the properties of the label
+
+	//Bounds each data point to a text label and sets the
+  // properties of the label
      svg.append('g')
         .attr('class', "labels")
         .selectAll("text")
@@ -200,13 +204,15 @@ With the set up in place we can write up our ```draw``` and ```update``` functio
         .attr("font-size", "11px")
         .attr("fill", "red");
 
-//Calls the x axis and groups all its labels under a svg group ('g') element
+//Calls the x axis and groups all its labels under a
+// svg group ('g') element
       svg.append("g")
           .attr("class", "x axis")
           .attr("transform", "translate(0," + (h - yPadding) + ")")
           .call(xAxis);
 
-//Calls the y axis and groups all its labels under a svg group ('g') element
+//Calls the y axis and groups all its labels under a svg group
+// ('g') element
       svg.append("g")
           .attr("class", "y axis")
           .call(yAxis);
@@ -227,8 +233,9 @@ function update(dataSet) {
     var xAxis = axes[0]
     var yAxis = axes[1]
 
-    //Since our data is in JSON format we need to define a key function to help
-    //D3 keep track of data points order. For more info check:
+    //Since our data is in JSON format we need to define
+    //a key function to help //D3 keep track of data points
+    // order. For more info check:
 //http://chimera.labs.oreilly.com/books/1230000000345/ch09.html#_data_joins_with_keys
     var key = function(d) {
       return d.university;
@@ -239,8 +246,8 @@ function update(dataSet) {
                   .selectAll("rect")
                   .data(dataSet, key)
 
-// Adds additional rectangles if the dataset contains additional points and
-//applies the corresponding attributes
+// Adds additional rectangles if the dataset contains
+// additional points and applies the corresponding attributes
     rects.enter()
       .append("rect")
       .attr("x", xPadding)
@@ -254,8 +261,8 @@ function update(dataSet) {
         return h/dataSet.length - rectMargin
       })
 
-// Remove the extra rectangles if the current dataset is smaller than the
-//previous one
+// Remove the extra rectangles if the current dataset is
+// smaller than the previous one
     rects.exit()
       .transition()
       .duration(500)
@@ -282,8 +289,8 @@ function update(dataSet) {
                      .selectAll('.amount')
                      .data(dataSet, key)
 
-//Adds additional labels if the dataset contains additional points and applies
-// the corresponding attributes
+//Adds additional labels if the dataset contains additional
+// points and applies the corresponding attributes
     labels.enter()
           .append("text")
           .text(function (d) {
@@ -301,8 +308,9 @@ function update(dataSet) {
           .attr("font-size", "11px")
           .attr("fill", "red")
 
-// Remove the extra labels if the current dataset is smaller than the previous one
-	labels.exit()
+// Remove the extra labels if the current dataset is
+// smaller than the previous one
+	  labels.exit()
             .transition()
             .duration(500)
             .attr("x", w)  // <-- Exit stage left
