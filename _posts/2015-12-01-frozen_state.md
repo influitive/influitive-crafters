@@ -1,6 +1,13 @@
 ---
 published: true
+layout: post
+author: Enric Ribas
+date: 2015-12-01T00:00:00.000Z
+description: Frozen State
+categories: 
+  - news
 ---
+
 
 
 This is a followup to my previous post about  [React with a Flux-y store](http://www.enricribas.com/fluxy/)
