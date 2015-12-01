@@ -1,6 +1,7 @@
 ---
-published: false
+published: true
 ---
+
 
 This is a followup to my previous post about  [React with a Flux-y store](http://www.enricribas.com/fluxy/)
 
@@ -192,4 +193,3 @@ We are making the assumption that the data returned from the server completely r
 So I think that by updating the data on the frontend with freezer and calling a "command" on the front-end, we have greatly simplified the front-end. Now the backend gets a command from the front-end (aka "action") and it returns data after updating. Essentially, the store shouldn't have to do much at all, just delegate to the server.
 
 I think this is a nice clean way of dealing with changes. What do you think?
-
