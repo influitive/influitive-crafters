@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 title:  "Chain of Responsibility for web requests"
 author: "Sundeep Gupta"
 date:   2016-01-19
