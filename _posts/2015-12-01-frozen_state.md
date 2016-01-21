@@ -2,7 +2,7 @@
 published: true
 layout: post
 author: Enric Ribas
-date: {}
+date: 2015-12-01
 description: "Command your State - Using commands and actions to modify your state"
 categories: 
   - news
