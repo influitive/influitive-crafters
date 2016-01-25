@@ -87,9 +87,9 @@ A couple of things to note here. We've introduced the chain object, `requestChai
 
 #### Chain code
 To implement the chain, we need three components:
-2. The link protocol (also known as an interface in other languages, like Java).
-3. The concrete link classes.
-1. The chain class, which holds the links.
+1. The link protocol (also known as an interface in other languages, like Java).
+2. The concrete link classes.
+3. The chain class, which holds the links.
 
 
 ##### Links
